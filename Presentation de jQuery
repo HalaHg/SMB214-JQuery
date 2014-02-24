@@ -83,7 +83,7 @@ qu'une fois qu'un utilisateur demande un fichier, il sera servi à partir du ser
 conduit également à accélérer le temps de chargement.
 
 
-I - jQuery Syntax
+I - Syntaxe de jQuery
 
 Avec jQuery vous sélectionnez (requête / query) les éléments HTML et vous effectuez des "actions" sur eux.
 Donc la syntaxe jQuery est faite sur mesure pour sélectionner des éléments HTML et effectuer une
