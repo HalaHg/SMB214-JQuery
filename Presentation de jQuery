@@ -1,2 +1,89 @@
 Présentation de jQuery
 
+JQuery est une JavaScript library  multi-plateforme. C'est très facile à comprendre et à utiliser. Son but est de
+simplifier la programmation en JavaScript dans les sites web. En outre, elle simplifie les choses compliquées en 
+JavaScript comme les appels AJAX et la manipulation DOM. 
+Il existe différent JavaScript frameworks, mais jQuery est plus populaire et la plus extensible.
+
+On a plusieurs méthodes pour ajouter jQuery à notre site web, on peut télécharger jQuery library du site jQyery.com ou
+intégrer jQuery de la CDN, comme Google.
+
+Téléchargement de jQuery
+I existe 2 versions valides pour le téléchargement de JQuery:
+Production version - utiliser pour les sites web en ligne car elle est minimisée et comprimée
+Development version - utiliser pour les expérimentation et developpement (non comprimée et code lisible)
+Les 2 versions peut être téléchargé de jQuery.com.
+
+JQuery library est un seul fichier JavaScript, qu'on le réfère avec HTML
+<script> tag (notons que <script> tag doit être dans la section <head>:
+
+<head>
+<script src="jquery-1.10.2.min.js"></script>
+</head>
+
+Remarque: D'ailleurs, on ajoutait type="text/javascript" dans <script> tag mais maintenant dans HTML5 cela n'est pas 
+obligatoire car JavaScript est un langage par défaut dans HTML5 et dans tous les navigateurs modernes.
+
+
+Alternatives à télécharger
+Si vous ne souhaitez pas télécharger et héberger jQuery vous-même, vous pouvez l'inclure à partir de CDN 
+(Content Delivery Network). Google et Microsoft accueille jQuery.
+
+Pour utiliser jQuery de Google ou Microsoft, on l'utilise à partir  de:
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("p").hide();
+  });
+});
+</script>
+</head>
+
+<body>
+<h2>This is a heading</h2>
+<p>This is a paragraph. And on click this paragraph will disappear</p>
+<button>Click me</button>
+</body>
+</html>
+
+ou d'une autre méthode:
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("p").hide();
+  });
+});
+</script>
+</head>
+
+<body>
+<h2>This is a heading</h2>
+<p>This is a paragraph. And on click this paragraph will disappear</p>
+<button>Click me</button>
+</body>
+</html>
+
+L'attribut src dans la tag <script> à changer
+
+On a un grand avantage si on utilise jQuery de Google ou de Microsoft:
+De nombreux utilisateurs ont déjà téléchargé jQuery de Google ou de Microsoft en visitant
+autre site. En conséquence, il sera chargé à partir de la mémoire cache quand ils visitent votre site,
+ce qui conduit à accélérer le temps de chargement. En outre, la plupart de CDN aura s'assurer
+qu'une fois qu'un utilisateur demande un fichier, il sera servi à partir du serveur le plus proche pour eux, qui
+conduit également à accélérer le temps de chargement.
+
+
+
+
+
+
