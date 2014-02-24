@@ -83,7 +83,48 @@ qu'une fois qu'un utilisateur demande un fichier, il sera servi à partir du ser
 conduit également à accélérer le temps de chargement.
 
 
+I - jQuery Syntax
 
+Avec jQuery vous sélectionnez (requête / query) les éléments HTML et vous effectuez des "actions" sur eux.
+Donc la syntaxe jQuery est faite sur mesure pour sélectionner des éléments HTML et effectuer une
+action sur ces éléments.
+La syntaxe de base est:  $(selector).action();
+  * $ est pour définir l'accès de jQuery
+  * (selector) pour trouver l'élément HTML sélectionné
+  * action() Une action jQuery à effectuer sur l'élément
+  
+Examples:
+$(this).hide() - masquer l'élément courant
+$("p").hide() - masquer tous les éléments de <p>
+$(".test").hide() - masquer tous les éléments ayant l'attribut class="test".
+$("#test").hide() - masquer l'élément ayant l'attribut id="test".
+De même, on peut faire des sélections à partir du CSS, jQuery utilise les syntaxes CSS pour sélectionner des 
+éléments HTML.
+
+L'évènement Document Ready
+Vous avez sans doute remarqué que toutes les méthodes jQuery dans nos exemples, sont dans un cas document ready
+
+$(document).ready(function(){
+   // jQuery methods go here...
+});
+
+Ceci afin d'éviter tout code jQuery de s'exécuter avant que le document sera fini de se charger (is ready).
+Il est meilleur d'attendre que le document soit entièrement chargé et prêt avant toute intervention .
+Cela permet également d'avoir votre code JavaScript dans la section de la tête avant le corps de votre document.
+
+Voici quelques exemples d'actions qui peuvent échouer si les méthodes sont exécutées avant que le document
+est entièrement chargé:
+
+En essayant de cacher un élément qui n'est pas encore créé
+Essayer d'obtenir la taille d'une image qui n'est pas encore chargée
+Astuce: L'équipe de jQuery a également créé une méthode encore plus court pour l'événement document ready:
+
+$ (function () {
+/ / Méthodes jQuery vont ici ...
+});
+
+Utilisez la syntaxe que vous préférez.
+Nous pensons que l'événement document ready est plus facile à comprendre à la lecture du code.
 
 
 
