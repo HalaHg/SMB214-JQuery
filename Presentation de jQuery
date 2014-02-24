@@ -85,46 +85,143 @@ conduit également à accélérer le temps de chargement.
 
 I - Syntaxe de jQuery
 
-Avec jQuery vous sélectionnez (requête / query) les éléments HTML et vous effectuez des "actions" sur eux.
-Donc la syntaxe jQuery est faite sur mesure pour sélectionner des éléments HTML et effectuer une
-action sur ces éléments.
-La syntaxe de base est:  $(selector).action();
-  * $ est pour définir l'accès de jQuery
-  * (selector) pour trouver l'élément HTML sélectionné
-  * action() Une action jQuery à effectuer sur l'élément
+  Avec jQuery vous sélectionnez (requête / query) les éléments HTML et vous effectuez des "actions" sur eux.
+  Donc la syntaxe jQuery est faite sur mesure pour sélectionner des éléments HTML et effectuer une
+  action sur ces éléments.
+  La syntaxe de base est:  $(selector).action();
+    * $ est pour définir l'accès de jQuery
+    * (selector) pour trouver l'élément HTML sélectionné
+    * action() Une action jQuery à effectuer sur l'élément
+    
+  Examples:
+  $(this).hide() - masquer l'élément courant
+  $("p").hide() - masquer tous les éléments de <p>
+  $(".test").hide() - masquer tous les éléments ayant l'attribut class="test".
+  $("#test").hide() - masquer l'élément ayant l'attribut id="test".
+  De même, on peut faire des sélections à partir du CSS, jQuery utilise les syntaxes CSS pour sélectionner des 
+  éléments HTML.
   
-Examples:
-$(this).hide() - masquer l'élément courant
-$("p").hide() - masquer tous les éléments de <p>
-$(".test").hide() - masquer tous les éléments ayant l'attribut class="test".
-$("#test").hide() - masquer l'élément ayant l'attribut id="test".
-De même, on peut faire des sélections à partir du CSS, jQuery utilise les syntaxes CSS pour sélectionner des 
-éléments HTML.
+  L'évènement Document Ready
+  Vous avez sans doute remarqué que toutes les méthodes jQuery dans nos exemples, sont dans un cas document ready
+  
+  $(document).ready(function(){
+     // jQuery methods go here...
+  });
+  
+  Ceci afin d'éviter tout code jQuery de s'exécuter avant que le document sera fini de se charger (is ready).
+  Il est meilleur d'attendre que le document soit entièrement chargé et prêt avant toute intervention .
+  Cela permet également d'avoir votre code JavaScript dans la section de la tête avant le corps de votre document.
+  
+  Voici quelques exemples d'actions qui peuvent échouer si les méthodes sont exécutées avant que le document
+  est entièrement chargé:
+  
+  En essayant de cacher un élément qui n'est pas encore créé
+  Essayer d'obtenir la taille d'une image qui n'est pas encore chargée
+  Astuce: L'équipe de jQuery a également créé une méthode encore plus court pour l'événement document ready:
+  
+  $ (function () {
+  / / Méthodes jQuery vont ici ...
+  });
+  
+  Utilisez la syntaxe que vous préférez.
+  Nous pensons que l'événement document ready est plus facile à comprendre à la lecture du code.
 
-L'évènement Document Ready
-Vous avez sans doute remarqué que toutes les méthodes jQuery dans nos exemples, sont dans un cas document ready
+II - Les sélecteurs de jQuery
 
-$(document).ready(function(){
-   // jQuery methods go here...
-});
-
-Ceci afin d'éviter tout code jQuery de s'exécuter avant que le document sera fini de se charger (is ready).
-Il est meilleur d'attendre que le document soit entièrement chargé et prêt avant toute intervention .
-Cela permet également d'avoir votre code JavaScript dans la section de la tête avant le corps de votre document.
-
-Voici quelques exemples d'actions qui peuvent échouer si les méthodes sont exécutées avant que le document
-est entièrement chargé:
-
-En essayant de cacher un élément qui n'est pas encore créé
-Essayer d'obtenir la taille d'une image qui n'est pas encore chargée
-Astuce: L'équipe de jQuery a également créé une méthode encore plus court pour l'événement document ready:
-
-$ (function () {
-/ / Méthodes jQuery vont ici ...
-});
-
-Utilisez la syntaxe que vous préférez.
-Nous pensons que l'événement document ready est plus facile à comprendre à la lecture du code.
-
-
-
+  1 - Les sélecteurs de jQuery
+  
+      Les sélecteurs de jQuery vous permettent de sélectionner et de manipuler les éléments dans HTML. 
+      Les sélecteurs de jQuery sont utilisés pour «trouver» (ou sélectionnez) des éléments HTML 
+      en fonction de leur identification, leurs classes, leurs types, leurs attributs, les valeurs des attributs 
+      et beaucoup plus. Il est basé sur les sélecteurs existants en CSS.
+      Tous les sélecteurs de jQuery commencent avec le signe du dollar et entre parenthèses: $().
+      
+  2 - Le sélecteur d'élément 
+  
+      L'élément sélecteur de jQuery sélectionne des éléments sur la base du nom de l'élément.
+      Vous pouvez sélectionner tous les éléments <p> sur une page comme celle-ci: $ ("p")
+      
+      Exemple:  Quand un utilisateur clique sur le bouton, tous les éléments <p> de cette exmeple vont se cacher
+          <!DOCTYPE html>
+          <html>
+          <head>
+          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+          </script>
+          <script>
+          $(document).ready(function(){
+            $("button").click(function(){
+              $("p").hide();
+            });
+          });
+          </script>
+          </head>
+          
+          <body>
+          <h2>This is a heading</h2>
+          <p>Paragraph 1</p>
+           <p>Paragraph 2</p>
+            <p>Paragraph 3</p>
+          <button>Click me</button>
+          </body>
+          </html>
+        
+  3 - Le sélecteur # id
+  
+      Le sélecteur # id de jQuery utilise l'attribut id d'une balise HTML pour trouver l'élément spécifique.
+      Un id doit être unique dans une page, vous devez donc utiliser le sélecteur # id si vous souhaitez
+      trouver un seul élément unique. Pour trouver un élément avec un ID spécifique, écrire un signe dièse,
+      suivi par l'id de l'élément: $ ("# test")
+      
+      Exemple: Quand un utilisateur clique sur le bouton, l'élément avec id = "test" sera caché:
+          <!DOCTYPE html>
+          <html>
+          <head>
+          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+          </script>
+          <script>
+          $(document).ready(function(){
+            $("button").click(function(){
+              $("#test").hide();
+            });
+          });
+          </script>
+          </head>
+          
+          <body>
+          <h2>This is a heading</h2>
+           <p>Paragraph 1</p>
+           <p id="test">Paragraph 2</p>
+           <p>Paragraph 3</p>
+          <button>Click me</button>
+          </body>
+          </html>
+          
+  4 - Le sélecteur .class
+  
+      Le sélecteur .class cherche des éléments avec une classe spécifique. Pour trouver les éléments avec
+      une classe spécifique, écrire un caractère de période, suivi du nom de la classe: $(".test")
+      
+      Exemple :Quand un utilisateur clique sur un bouton, les éléments avec class = "test" seront cachés:
+        Donc p2 et p3 vont se cacher
+          <!DOCTYPE html>
+          <html>
+          <head>
+          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+          </script>
+          <script>
+          $(document).ready(function(){
+            $("button").click(function(){
+              $("#test").hide();
+            });
+          });
+          </script>
+          </head>
+          
+          <body>
+          <h2>This is a heading</h2>
+           <p>Paragraph 1</p>
+           <p class="test">Paragraph 2</p>
+           <p class="test">Paragraph 3</p>
+          <button>Click me</button>
+          </body>
+          </html>
