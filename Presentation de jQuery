@@ -225,3 +225,18 @@ II - Les sélecteurs de jQuery
           <button>Click me</button>
           </body>
           </html>
+          
+  5 - D'autres exemples de selecteurs:
+  
+      $("*")	Cherche tous les éléments du document
+      $(this)	Cherche l'élément du document HTML courant
+      $("p.intro")	Cherche tous les éléments <p> ayant class="intro"	
+      $("p:first")	Cherche le premier élément <p> 
+      $("ul li:first")	Cherche le premier élément <li> de la première liste <ul>
+      $("ul li:first-child")	Cherche le premier élément <li> de chaque <ul>
+      $("[href]")	Cherche tous les éléments ayant un attribut href 	
+      $("a[target='_blank']")	Cherche tous les éléments  <a> avec un attribut target ayant une valeur  "_blank"	
+      $("a[target!='_blank']")	Cherche tous les éléments  <a> avec un attribut target n'ayant pas une valeur "_blank"	
+      $(":button")	Cherche tous les éléments <button> et <input> de type="button"	
+      $("tr:even")	Cherche tous les éléments <tr> even	
+      $("tr:odd")	Cherche tous les éléments <tr> odd
