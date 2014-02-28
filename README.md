@@ -1,4 +1,4 @@
-SMB214-JQuery
+SMB214-JQuery--
 =============
 Le but de jQuery est de facliter l'utilisation du Javascript dans nos sites Web.
 
