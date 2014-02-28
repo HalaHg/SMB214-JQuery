@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>jQuery</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+        <div>
+            Présentation de jQuery
+
+            JQuery est une JavaScript library  multi-plateforme. C'est très facile à comprendre et à utiliser. Son but est de
+            simplifier la programmation en JavaScript dans les sites web. En outre, elle simplifie les choses compliquées en 
+            JavaScript comme les appels AJAX et la manipulation DOM. 
+            Il existe différent JavaScript frameworks, mais jQuery est plus populaire et la plus extensible.
+
+            On a plusieurs méthodes pour ajouter jQuery à notre site web, on peut télécharger jQuery library du site jQyery.com ou
+            intégrer jQuery de la CDN, comme Google.
+
+            Téléchargement de jQuery
+            I existe 2 versions valides pour le téléchargement de JQuery:
+            Production version - utiliser pour les sites web en ligne car elle est minimisée et comprimée
+            Development version - utiliser pour les expérimentation et developpement (non comprimée et code lisible)
+            Les 2 versions peut être téléchargé de jQuery.com.
+
+            JQuery library est un seul fichier JavaScript, qu'on le réfère avec HTML
+            <!--<script> tag (notons que <script> tag doit être dans la section <head>:
+
+            <head>
+            <script src="jquery-1.10.2.min.js"></script>
+            </head> -->
+
+            Remarque: D'ailleurs, on ajoutait type="text/javascript" dans script tag mais maintenant dans HTML5 cela n'est pas 
+            obligatoire car JavaScript est un langage par défaut dans HTML5 et dans tous les navigateurs modernes.
+
+
+            Alternatives à télécharger
+            Si vous ne souhaitez pas télécharger et héberger jQuery vous-même, vous pouvez l'inclure à partir de CDN 
+            (Content Delivery Network). Google et Microsoft accueille jQuery.
+
+            Pour utiliser jQuery de Google ou Microsoft, on l'utilise à partir  de:
+
+<!--<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("p").hide();
+  });
+});
+</script>
+</head>
+
+<body>
+<h2>This is a heading</h2>
+<p>This is a paragraph. And on click this paragraph will disappear</p>
+<button>Click me</button>
+</body>
+</html>
+
+ou d'une autre méthode:
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("p").hide();
+  });
+});
+</script>
+</head>
+
+<body>
+<h2>This is a heading</h2>
+<p>This is a paragraph. And on click this paragraph will disappear</p>
+<button>Click me</button>
+</body>
+</html> -->
+
+L'attribut src dans la tag script à changer
+
+On a un grand avantage si on utilise jQuery de Google ou de Microsoft:
+De nombreux utilisateurs ont déjà téléchargé jQuery de Google ou de Microsoft en visitant
+autre site. En conséquence, il sera chargé à partir de la mémoire cache quand ils visitent votre site,
+ce qui conduit à accélérer le temps de chargement. En outre, la plupart de CDN aura s'assurer
+qu'une fois qu'un utilisateur demande un fichier, il sera servi à partir du serveur le plus proche pour eux, qui
+conduit également à accélérer le temps de chargement.
+
+
+I - Syntaxe de jQuery
+
+  Avec jQuery vous sélectionnez (requête / query) les éléments HTML et vous effectuez des "actions" sur eux.
+  Donc la syntaxe jQuery est faite sur mesure pour sélectionner des éléments HTML et effectuer une
+  action sur ces éléments.
+  La syntaxe de base est:  $(selector).action();
+    * $ est pour définir l'accès de jQuery
+    * (selector) pour trouver l'élément HTML sélectionné
+    * action() Une action jQuery à effectuer sur l'élément
+    
+  Examples:
+  $(this).hide() - masquer l'élément courant
+  $("p").hide() - masquer tous les éléments de &lt;p&gt;
+  $(".test").hide() - masquer tous les éléments ayant l'attribut class="test".
+  $("#test").hide() - masquer l'élément ayant l'attribut id="test".
+  De même, on peut faire des sélections à partir du CSS, jQuery utilise les syntaxes CSS pour sélectionner des 
+  éléments HTML.
+  
+  L'évènement Document Ready
+  Vous avez sans doute remarqué que toutes les méthodes jQuery dans nos exemples, sont dans un cas document ready
+  
+  $(document).ready(function(){
+     // jQuery methods go here...
+  });
+  
+  Ceci afin d'éviter tout code jQuery de s'exécuter avant que le document sera fini de se charger (is ready).
+  Il est meilleur d'attendre que le document soit entièrement chargé et prêt avant toute intervention .
+  Cela permet également d'avoir votre code JavaScript dans la section de la tête avant le corps de votre document.
+  
+  Voici quelques exemples d'actions qui peuvent échouer si les méthodes sont exécutées avant que le document
+  est entièrement chargé:
+  
+  En essayant de cacher un élément qui n'est pas encore créé
+  Essayer d'obtenir la taille d'une image qui n'est pas encore chargée
+  Astuce: L'équipe de jQuery a également créé une méthode encore plus court pour l'événement document ready:
+  
+  $ (function () {
+  / / Méthodes jQuery vont ici ...
+  });
+  
+  Utilisez la syntaxe que vous préférez.
+  Nous pensons que l'événement document ready est plus facile à comprendre à la lecture du code.
+
+II - Les sélecteurs de jQuery
+
+  1 - Les sélecteurs de jQuery
+  
+      Les sélecteurs de jQuery vous permettent de sélectionner et de manipuler les éléments dans HTML. 
+      Les sélecteurs de jQuery sont utilisés pour «trouver» (ou sélectionnez) des éléments HTML 
+      en fonction de leur identification, leurs classes, leurs types, leurs attributs, les valeurs des attributs 
+      et beaucoup plus. Il est basé sur les sélecteurs existants en CSS.
+      Tous les sélecteurs de jQuery commencent avec le signe du dollar et entre parenthèses: $().
+      
+  2 - Le sélecteur d'élément 
+  
+      L'élément sélecteur de jQuery sélectionne des éléments sur la base du nom de l'élément.
+      Vous pouvez sélectionner tous les éléments <p> sur une page comme celle-ci: $ ("p")
+      
+      Exemple:  Quand un utilisateur clique sur le bouton, tous les éléments <p> de cette exmeple vont se cacher
+         <!-- <!DOCTYPE html>
+          <html>
+          <head>
+          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+          </script>
+          <script>
+          $(document).ready(function(){
+            $("button").click(function(){
+              $("p").hide();
+            });
+          });
+          </script>
+          </head>
+          
+          <body>
+          <h2>This is a heading</h2>
+          <p>Paragraph 1</p>
+           <p>Paragraph 2</p>
+            <p>Paragraph 3</p>
+          <button>Click me</button>
+          </body>
+          </html> -->
+        
+  3 - Le sélecteur # id
+  
+      Le sélecteur # id de jQuery utilise l'attribut id d'une balise HTML pour trouver l'élément spécifique.
+      Un id doit être unique dans une page, vous devez donc utiliser le sélecteur # id si vous souhaitez
+      trouver un seul élément unique. Pour trouver un élément avec un ID spécifique, écrire un signe dièse,
+      suivi par l'id de l'élément: $ ("# test")
+      
+      Exemple: Quand un utilisateur clique sur le bouton, l'élément avec id = "test" sera caché:
+         <!-- <!DOCTYPE html>
+          <html>
+          <head>
+          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+          </script>
+          <script>
+          $(document).ready(function(){
+            $("button").click(function(){
+              $("#test").hide();
+            });
+          });
+          </script>
+          </head>
+          
+          <body>
+          <h2>This is a heading</h2>
+           <p>Paragraph 1</p>
+           <p id="test">Paragraph 2</p>
+           <p>Paragraph 3</p>
+          <button>Click me</button>
+          </body>
+          </html> -->
+          
+  4 - Le sélecteur .class
+  
+      Le sélecteur .class cherche des éléments avec une classe spécifique. Pour trouver les éléments avec
+      une classe spécifique, écrire un caractère de période, suivi du nom de la classe: $(".test")
+      
+      Exemple :Quand un utilisateur clique sur un bouton, les éléments avec class = "test" seront cachés:
+        Donc p2 et p3 vont se cacher
+         <!-- <!DOCTYPE html>
+          <html>
+          <head>
+          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+          </script>
+          <script>
+          $(document).ready(function(){
+            $("button").click(function(){
+              $("#test").hide();
+            });
+          });
+          </script>
+          </head>
+          
+          <body>
+          <h2>This is a heading</h2>
+           <p>Paragraph 1</p>
+           <p class="test">Paragraph 2</p>
+           <p class="test">Paragraph 3</p>
+          <button>Click me</button>
+          </body>
+          </html> -->
+          
+  5 - D'autres exemples de selecteurs:
+ 
+      $("*")	Cherche tous les éléments du document
+      $(this)	Cherche l'élément du document HTML courant
+      $("p.intro")	Cherche tous les éléments &lt;p&gt; ayant class="intro"	
+      $("p:first")	Cherche le premier élément &lt;p&gt;
+      $("ul li:first")	Cherche le premier élément &lt;li&gt; de la première liste &lt;ul&gt;
+      $("ul li:first-child")	Cherche le premier élément &lt;li&gt; de chaque &lt;ul&gt;
+      $("[href]")	Cherche tous les éléments ayant un attribut href 	
+      $("a[target='_blank']")	Cherche tous les éléments  &lt;a&gt; avec un attribut target ayant une valeur  "_blank"	
+      $("a[target!='_blank']")	Cherche tous les éléments  &lt;a&gt; avec un attribut target n'ayant pas une valeur "_blank"	
+      $(":button")	Cherche tous les éléments &lt;button&gt; et &lt;input&gt; de type="button"	
+      $("tr:even")	Cherche tous les éléments &lt;tr&gt; even	
+      $("tr:odd")	Cherche tous les éléments &lt;tr&gt; odd
+            
+        </div>
+        
+        
+    </body>
+</html>
