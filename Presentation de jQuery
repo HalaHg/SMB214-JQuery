@@ -1,242 +1,415 @@
-Présentation de jQuery
+  JQuery est une JavaScript library  multi-plateforme. C'est très facile à comprendre et à utiliser. Son but est de
+            simplifier la programmation en JavaScript dans les sites web. En outre, elle simplifie les choses compliquées en 
+            JavaScript comme les appels AJAX et la manipulation DOM. 
+            Il existe différent JavaScript frameworks, mais jQuery est plus populaire et la plus extensible.
 
-JQuery est une JavaScript library  multi-plateforme. C'est très facile à comprendre et à utiliser. Son but est de
-simplifier la programmation en JavaScript dans les sites web. En outre, elle simplifie les choses compliquées en 
-JavaScript comme les appels AJAX et la manipulation DOM. 
-Il existe différent JavaScript frameworks, mais jQuery est plus populaire et la plus extensible.
+            On a plusieurs méthodes pour ajouter jQuery à notre site web, on peut télécharger jQuery library du site jQyery.com ou
+            intégrer jQuery de la CDN, comme Google.
 
-On a plusieurs méthodes pour ajouter jQuery à notre site web, on peut télécharger jQuery library du site jQyery.com ou
-intégrer jQuery de la CDN, comme Google.
+            Téléchargement de jQuery
+            I existe 2 versions valides pour le téléchargement de JQuery:
+            Production version - utiliser pour les sites web en ligne car elle est minimisée et comprimée
+            Development version - utiliser pour les expérimentation et developpement (non comprimée et code lisible)
+            Les 2 versions peut être téléchargé de jQuery.com.
 
-Téléchargement de jQuery
-I existe 2 versions valides pour le téléchargement de JQuery:
-Production version - utiliser pour les sites web en ligne car elle est minimisée et comprimée
-Development version - utiliser pour les expérimentation et developpement (non comprimée et code lisible)
-Les 2 versions peut être téléchargé de jQuery.com.
+            JQuery library est un seul fichier JavaScript, qu'on le réfère avec HTML
+            <!--<script> tag (notons que <script> tag doit être dans la section <head>:
 
-JQuery library est un seul fichier JavaScript, qu'on le réfère avec HTML
-<script> tag (notons que <script> tag doit être dans la section <head>:
+            <head>
+            <script src="jquery-1.10.2.min.js"></script>
+            </head> -->
 
-<head>
-<script src="jquery-1.10.2.min.js"></script>
-</head>
-
-Remarque: D'ailleurs, on ajoutait type="text/javascript" dans <script> tag mais maintenant dans HTML5 cela n'est pas 
-obligatoire car JavaScript est un langage par défaut dans HTML5 et dans tous les navigateurs modernes.
+            Remarque: D'ailleurs, on ajoutait type="text/javascript" dans script tag mais maintenant dans HTML5 cela n'est pas 
+            obligatoire car JavaScript est un langage par défaut dans HTML5 et dans tous les navigateurs modernes.
 
 
-Alternatives à télécharger
-Si vous ne souhaitez pas télécharger et héberger jQuery vous-même, vous pouvez l'inclure à partir de CDN 
-(Content Delivery Network). Google et Microsoft accueille jQuery.
+            Alternatives à télécharger
+            Si vous ne souhaitez pas télécharger et héberger jQuery vous-même, vous pouvez l'inclure à partir de CDN 
+            (Content Delivery Network). Google et Microsoft accueille jQuery.
 
-Pour utiliser jQuery de Google ou Microsoft, on l'utilise à partir  de:
+            Pour utiliser jQuery de Google ou Microsoft, on l'utilise à partir  de:
 
-<!DOCTYPE html>
-<html>
-<head>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-  $("button").click(function(){
-    $("p").hide();
-  });
-});
-</script>
-</head>
-
-<body>
-<h2>This is a heading</h2>
-<p>This is a paragraph. And on click this paragraph will disappear</p>
-<button>Click me</button>
-</body>
-</html>
-
-ou d'une autre méthode:
-
-<!DOCTYPE html>
-<html>
-<head>
-<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.min.js"></script>
-<script>
-$(document).ready(function(){
-  $("button").click(function(){
-    $("p").hide();
-  });
-});
-</script>
-</head>
-
-<body>
-<h2>This is a heading</h2>
-<p>This is a paragraph. And on click this paragraph will disappear</p>
-<button>Click me</button>
-</body>
-</html>
-
-L'attribut src dans la tag <script> à changer
-
-On a un grand avantage si on utilise jQuery de Google ou de Microsoft:
-De nombreux utilisateurs ont déjà téléchargé jQuery de Google ou de Microsoft en visitant
-autre site. En conséquence, il sera chargé à partir de la mémoire cache quand ils visitent votre site,
-ce qui conduit à accélérer le temps de chargement. En outre, la plupart de CDN aura s'assurer
-qu'une fois qu'un utilisateur demande un fichier, il sera servi à partir du serveur le plus proche pour eux, qui
-conduit également à accélérer le temps de chargement.
-
-
-I - Syntaxe de jQuery
-
-  Avec jQuery vous sélectionnez (requête / query) les éléments HTML et vous effectuez des "actions" sur eux.
-  Donc la syntaxe jQuery est faite sur mesure pour sélectionner des éléments HTML et effectuer une
-  action sur ces éléments.
-  La syntaxe de base est:  $(selector).action();
-    * $ est pour définir l'accès de jQuery
-    * (selector) pour trouver l'élément HTML sélectionné
-    * action() Une action jQuery à effectuer sur l'élément
-    
-  Examples:
-  $(this).hide() - masquer l'élément courant
-  $("p").hide() - masquer tous les éléments de <p>
-  $(".test").hide() - masquer tous les éléments ayant l'attribut class="test".
-  $("#test").hide() - masquer l'élément ayant l'attribut id="test".
-  De même, on peut faire des sélections à partir du CSS, jQuery utilise les syntaxes CSS pour sélectionner des 
-  éléments HTML.
-  
-  L'évènement Document Ready
-  Vous avez sans doute remarqué que toutes les méthodes jQuery dans nos exemples, sont dans un cas document ready
-  
-  $(document).ready(function(){
-     // jQuery methods go here...
-  });
-  
-  Ceci afin d'éviter tout code jQuery de s'exécuter avant que le document sera fini de se charger (is ready).
-  Il est meilleur d'attendre que le document soit entièrement chargé et prêt avant toute intervention .
-  Cela permet également d'avoir votre code JavaScript dans la section de la tête avant le corps de votre document.
-  
-  Voici quelques exemples d'actions qui peuvent échouer si les méthodes sont exécutées avant que le document
-  est entièrement chargé:
-  
-  En essayant de cacher un élément qui n'est pas encore créé
-  Essayer d'obtenir la taille d'une image qui n'est pas encore chargée
-  Astuce: L'équipe de jQuery a également créé une méthode encore plus court pour l'événement document ready:
-  
-  $ (function () {
-  / / Méthodes jQuery vont ici ...
-  });
-  
-  Utilisez la syntaxe que vous préférez.
-  Nous pensons que l'événement document ready est plus facile à comprendre à la lecture du code.
-
-II - Les sélecteurs de jQuery
-
-  1 - Les sélecteurs de jQuery
-  
-      Les sélecteurs de jQuery vous permettent de sélectionner et de manipuler les éléments dans HTML. 
-      Les sélecteurs de jQuery sont utilisés pour «trouver» (ou sélectionnez) des éléments HTML 
-      en fonction de leur identification, leurs classes, leurs types, leurs attributs, les valeurs des attributs 
-      et beaucoup plus. Il est basé sur les sélecteurs existants en CSS.
-      Tous les sélecteurs de jQuery commencent avec le signe du dollar et entre parenthèses: $().
-      
-  2 - Le sélecteur d'élément 
-  
-      L'élément sélecteur de jQuery sélectionne des éléments sur la base du nom de l'élément.
-      Vous pouvez sélectionner tous les éléments <p> sur une page comme celle-ci: $ ("p")
-      
-      Exemple:  Quand un utilisateur clique sur le bouton, tous les éléments <p> de cette exmeple vont se cacher
-          <!DOCTYPE html>
-          <html>
-          <head>
-          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
-          </script>
-          <script>
-          $(document).ready(function(){
-            $("button").click(function(){
-              $("p").hide();
+            <!--<!DOCTYPE html>
+            <html>
+            <head>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+            <script>
+            $(document).ready(function(){
+              $("button").click(function(){
+                $("p").hide();
+              });
             });
-          });
-          </script>
-          </head>
-          
-          <body>
-          <h2>This is a heading</h2>
-          <p>Paragraph 1</p>
-           <p>Paragraph 2</p>
-            <p>Paragraph 3</p>
-          <button>Click me</button>
-          </body>
-          </html>
-        
-  3 - Le sélecteur # id
-  
-      Le sélecteur # id de jQuery utilise l'attribut id d'une balise HTML pour trouver l'élément spécifique.
-      Un id doit être unique dans une page, vous devez donc utiliser le sélecteur # id si vous souhaitez
-      trouver un seul élément unique. Pour trouver un élément avec un ID spécifique, écrire un signe dièse,
-      suivi par l'id de l'élément: $ ("# test")
-      
-      Exemple: Quand un utilisateur clique sur le bouton, l'élément avec id = "test" sera caché:
-          <!DOCTYPE html>
-          <html>
-          <head>
-          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
-          </script>
-          <script>
-          $(document).ready(function(){
-            $("button").click(function(){
-              $("#test").hide();
+            </script>
+            </head>
+
+            <body>
+            <h2>This is a heading</h2>
+            <p>This is a paragraph. And on click this paragraph will disappear</p>
+            <button>Click me</button>
+            </body>
+            </html>
+
+            ou d'une autre méthode:
+
+            <!DOCTYPE html>
+            <html>
+            <head>
+            <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.min.js"></script>
+            <script>
+            $(document).ready(function(){
+              $("button").click(function(){
+                $("p").hide();
+              });
             });
-          });
-          </script>
-          </head>
-          
-          <body>
-          <h2>This is a heading</h2>
-           <p>Paragraph 1</p>
-           <p id="test">Paragraph 2</p>
-           <p>Paragraph 3</p>
-          <button>Click me</button>
-          </body>
-          </html>
-          
-  4 - Le sélecteur .class
-  
-      Le sélecteur .class cherche des éléments avec une classe spécifique. Pour trouver les éléments avec
-      une classe spécifique, écrire un caractère de période, suivi du nom de la classe: $(".test")
-      
-      Exemple :Quand un utilisateur clique sur un bouton, les éléments avec class = "test" seront cachés:
-        Donc p2 et p3 vont se cacher
-          <!DOCTYPE html>
-          <html>
-          <head>
-          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
-          </script>
-          <script>
-          $(document).ready(function(){
-            $("button").click(function(){
-              $("#test").hide();
-            });
-          });
-          </script>
-          </head>
-          
-          <body>
-          <h2>This is a heading</h2>
-           <p>Paragraph 1</p>
-           <p class="test">Paragraph 2</p>
-           <p class="test">Paragraph 3</p>
-          <button>Click me</button>
-          </body>
-          </html>
-          
-  5 - D'autres exemples de selecteurs:
-  
-      $("*")	Cherche tous les éléments du document
-      $(this)	Cherche l'élément du document HTML courant
-      $("p.intro")	Cherche tous les éléments <p> ayant class="intro"	
-      $("p:first")	Cherche le premier élément <p> 
-      $("ul li:first")	Cherche le premier élément <li> de la première liste <ul>
-      $("ul li:first-child")	Cherche le premier élément <li> de chaque <ul>
-      $("[href]")	Cherche tous les éléments ayant un attribut href 	
-      $("a[target='_blank']")	Cherche tous les éléments  <a> avec un attribut target ayant une valeur  "_blank"	
-      $("a[target!='_blank']")	Cherche tous les éléments  <a> avec un attribut target n'ayant pas une valeur "_blank"	
-      $(":button")	Cherche tous les éléments <button> et <input> de type="button"	
-      $("tr:even")	Cherche tous les éléments <tr> even	
-      $("tr:odd")	Cherche tous les éléments <tr> odd
+            </script>
+            </head>
+
+            <body>
+            <h2>This is a heading</h2>
+            <p>This is a paragraph. And on click this paragraph will disappear</p>
+            <button>Click me</button>
+            </body>
+            </html> -->
+
+            L'attribut src dans la tag script à changer
+
+            On a un grand avantage si on utilise jQuery de Google ou de Microsoft:
+            De nombreux utilisateurs ont déjà téléchargé jQuery de Google ou de Microsoft en visitant
+            autre site. En conséquence, il sera chargé à partir de la mémoire cache quand ils visitent votre site,
+            ce qui conduit à accélérer le temps de chargement. En outre, la plupart de CDN aura s'assurer
+            qu'une fois qu'un utilisateur demande un fichier, il sera servi à partir du serveur le plus proche pour eux, qui
+            conduit également à accélérer le temps de chargement.
+
+
+            I - Syntaxe de jQuery
+
+              Avec jQuery vous sélectionnez (requête / query) les éléments HTML et vous effectuez des "actions" sur eux.
+              Donc la syntaxe jQuery est faite sur mesure pour sélectionner des éléments HTML et effectuer une
+              action sur ces éléments.
+              La syntaxe de base est:  $(selector).action();
+                * $ est pour définir l'accès de jQuery
+                * (selector) pour trouver l'élément HTML sélectionné
+                * action() Une action jQuery à effectuer sur l'élément
+
+              Examples:
+              $(this).hide() - masquer l'élément courant
+              $("p").hide() - masquer tous les éléments de &lt;p&gt;
+              $(".test").hide() - masquer tous les éléments ayant l'attribut class="test".
+              $("#test").hide() - masquer l'élément ayant l'attribut id="test".
+              De même, on peut faire des sélections à partir du CSS, jQuery utilise les syntaxes CSS pour sélectionner des 
+              éléments HTML.
+
+              L'évènement Document Ready
+              Vous avez sans doute remarqué que toutes les méthodes jQuery dans nos exemples, sont dans un cas document ready
+
+              $(document).ready(function(){
+                 // jQuery methods go here...
+              });
+
+              Ceci afin d'éviter tout code jQuery de s'exécuter avant que le document sera fini de se charger (is ready).
+              Il est meilleur d'attendre que le document soit entièrement chargé et prêt avant toute intervention .
+              Cela permet également d'avoir votre code JavaScript dans la section de la tête avant le corps de votre document.
+
+              Voici quelques exemples d'actions qui peuvent échouer si les méthodes sont exécutées avant que le document
+              est entièrement chargé:
+
+              En essayant de cacher un élément qui n'est pas encore créé
+              Essayer d'obtenir la taille d'une image qui n'est pas encore chargée
+              Astuce: L'équipe de jQuery a également créé une méthode encore plus court pour l'événement document ready:
+
+              $ (function () {
+              / / Méthodes jQuery vont ici ...
+              });
+
+              Utilisez la syntaxe que vous préférez.
+              Nous pensons que l'événement document ready est plus facile à comprendre à la lecture du code.
+
+            II - Les sélecteurs de jQuery
+
+              1 - Les sélecteurs de jQuery
+
+                  Les sélecteurs de jQuery vous permettent de sélectionner et de manipuler les éléments dans HTML. 
+                  Les sélecteurs de jQuery sont utilisés pour «trouver» (ou sélectionnez) des éléments HTML 
+                  en fonction de leur identification, leurs classes, leurs types, leurs attributs, les valeurs des attributs 
+                  et beaucoup plus. Il est basé sur les sélecteurs existants en CSS.
+                  Tous les sélecteurs de jQuery commencent avec le signe du dollar et entre parenthèses: $().
+
+              2 - Le sélecteur d'élément 
+
+                  L'élément sélecteur de jQuery sélectionne des éléments sur la base du nom de l'élément.
+                  Vous pouvez sélectionner tous les éléments <p> sur une page comme celle-ci: $ ("p")
+
+                  Exemple:  Quand un utilisateur clique sur le bouton, tous les éléments <p> de cette exmeple vont se cacher
+                     <!-- <!DOCTYPE html>
+                      <html>
+                      <head>
+                      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+                      </script>
+                      <script>
+                      $(document).ready(function(){
+                        $("button").click(function(){
+                          $("p").hide();
+                        });
+                      });
+                      </script>
+                      </head>
+
+                      <body>
+                      <h2>This is a heading</h2>
+                      <p>Paragraph 1</p>
+                       <p>Paragraph 2</p>
+                        <p>Paragraph 3</p>
+                      <button>Click me</button>
+                      </body>
+                      </html> -->
+
+              3 - Le sélecteur # id
+
+                  Le sélecteur # id de jQuery utilise l'attribut id d'une balise HTML pour trouver l'élément spécifique.
+                  Un id doit être unique dans une page, vous devez donc utiliser le sélecteur # id si vous souhaitez
+                  trouver un seul élément unique. Pour trouver un élément avec un ID spécifique, écrire un signe dièse,
+                  suivi par l'id de l'élément: $ ("# test")
+
+                  Exemple: Quand un utilisateur clique sur le bouton, l'élément avec id = "test" sera caché:
+                     <!-- <!DOCTYPE html>
+                      <html>
+                      <head>
+                      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+                      </script>
+                      <script>
+                      $(document).ready(function(){
+                        $("button").click(function(){
+                          $("#test").hide();
+                        });
+                      });
+                      </script>
+                      </head>
+
+                      <body>
+                      <h2>This is a heading</h2>
+                       <p>Paragraph 1</p>
+                       <p id="test">Paragraph 2</p>
+                       <p>Paragraph 3</p>
+                      <button>Click me</button>
+                      </body>
+                      </html> -->
+
+              4 - Le sélecteur .class
+
+                  Le sélecteur .class cherche des éléments avec une classe spécifique. Pour trouver les éléments avec
+                  une classe spécifique, écrire un caractère de période, suivi du nom de la classe: $(".test")
+
+                  Exemple :Quand un utilisateur clique sur un bouton, les éléments avec class = "test" seront cachés:
+                    Donc p2 et p3 vont se cacher
+                     <!-- <!DOCTYPE html>
+                      <html>
+                      <head>
+                      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+                      </script>
+                      <script>
+                      $(document).ready(function(){
+                        $("button").click(function(){
+                          $("#test").hide();
+                        });
+                      });
+                      </script>
+                      </head>
+
+                      <body>
+                      <h2>This is a heading</h2>
+                       <p>Paragraph 1</p>
+                       <p class="test">Paragraph 2</p>
+                       <p class="test">Paragraph 3</p>
+                      <button>Click me</button>
+                      </body>
+                      </html> -->
+
+              5 - D'autres exemples de selecteurs:
+
+                  $("*")	Cherche tous les éléments du document
+                  $(this)	Cherche l'élément du document HTML courant
+                  $("p.intro")	Cherche tous les éléments &lt;p&gt; ayant class="intro"	
+                  $("p:first")	Cherche le premier élément &lt;p&gt;
+                  $("ul li:first")	Cherche le premier élément &lt;li&gt; de la première liste &lt;ul&gt;
+                  $("ul li:first-child")	Cherche le premier élément &lt;li&gt; de chaque &lt;ul&gt;
+                  $("[href]")	Cherche tous les éléments ayant un attribut href 	
+                  $("a[target='_blank']")	Cherche tous les éléments  &lt;a&gt; avec un attribut target ayant une valeur  "_blank"	
+                  $("a[target!='_blank']")	Cherche tous les éléments  &lt;a&gt; avec un attribut target n'ayant pas une valeur "_blank"	
+                  $(":button")	Cherche tous les éléments &lt;button&gt; et &lt;input&gt; de type="button"	
+                  $("tr:even")	Cherche tous les éléments &lt;tr&gt; even	
+                  $("tr:odd")	Cherche tous les éléments &lt;tr&gt; odd
+           
+                  
+                III - Les Events de jQuery
+
+                    1 - C'est quoi events dans jQuery ?
+
+                        Tous les différentes actions qu'un visiteur peut faire su un site web est nommé Event.
+                        Ce dernier précise le temps de l'action et quand elle se déroule.
+                        Exemple:
+                        * Lorsqu'on clique su le curseur pour une ou deux fois
+                        * Lorsqu'on met le curseur sur un élément
+
+
+                          Mouse Events	Keyboard Events    Form Events	  Document/Window Events
+                          click	           keypress	     submit	         load
+                          dblclick	   keydown	     change	         resize
+                          mouseenter	   keyup	     focus	         scroll
+                          mouseleave	                     blur	         unload
+
+                    2 - Les syntaxes de jQuery pour les méthodes Event
+
+                        Dans jQuery, la plupart des DOM events possèdent des méthodes équivalentes de jQuery.
+                        Exemple:
+                        * Si on voulait assigner un event click pour tous les paragraphes sur une page, on écrit:
+                          $("p").click();
+                        * Puis on définit qu'est-ce qui va arriver lorsqu'on clique le curseur. On ajoutte un fonction:
+                          $("p").click(function(){
+                            // action goes here!!
+                          });
+
+                        Quelques exemples:
+                        * dblClick()
+                        * mouseenter()  -  mouseup()  -  mouseleave()  -  mousedown()
+                        * hide()  -  show()
+                        * slideToggle() -  slideUp()  -  sliadeDown()
+                        * hover()
+                        * focus()
+                        * blur()
+
+
+                    IV - JQuery AJAX :
+
+                       AJAX est l'art de l'échange de données avec un serveur, et la mise à jour des parties d'une page Web - sans recharger la page entière.
+
+                       Qu'est-ce que AJAX ?
+                       AJAX = Asynchronous JavaScript and XML . 
+                       En bref , AJAX est pour ​​le chargement de données en arrière-plan et l'afficher sur la page Web, sans avoir à recharger la page entière .
+                       Exemples d'applications utilisant AJAX : Gmail , Google Maps , Youtube , et onglets Facebook . 
+
+                       Qu'en est-il de jQuery et AJAX ?
+                       jQuery fournit plusieurs méthodes pour les fonctionnalités AJAX .
+                       Avec les méthodes jQuery AJAX , vous pouvez demander le texte , HTML , XML , JSON ou à partir d'un serveur distant en utilisant les protocoles HTTP GET et HTTP POST - Et vous pouvez charger les données externes directement dans les éléments HTML sélectionnés de votre page web !
+
+                       Remarque: Sans jQuery , AJAX codage peut être un peu difficile !
+                          L'écriture de code AJAX régulière peut être un peu difficile , parce que les différents navigateurs ont une syntaxe différente pour la mise en œuvre AJAX . Cela signifie que vous devrez écrire du code supplémentaire pour tester les différents navigateurs . Cependant , l'équipe de jQuery a pris soin de cela, afin que nous puissions écrire des fonctionnalités AJAX avec une seule ligne de code .
+
+                       1 - jQuery - AJAX Methode load() 
+
+                          La méthode load() est une méthode AJAX simple, mais puissante.
+                          La méthode load() charge les données d' un serveur et met les données renvoyées dans l'élément sélectionné .
+                          Syntaxe:  
+                          $(selector).load(URL,data,callback);
+                          Le paramètre d'URL requis spécifie l'URL que vous souhaitez charger .
+                          Le paramètre data optionnel spécifie un ensemble de chaîne de requête paires clé/valeur à envoyer avec la demande .
+                          Le paramètre optionnel callback est le nom d' une fonction à exécuter après que la fonction load() est terminée.
+
+                          Voici le contenu de notre fichier d'exemple : " demo_test.txt " :
+                              <!--<!DOCTYPE html>
+                                  <html>
+                                      <head>
+                                          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+                                          </script>
+                                          <script>
+                                          $(document).ready(function(){
+                                            $("button").click(function(){
+                                              $("#div1").load("demo_test.txt");
+                                            });
+                                          });
+                                          </script>
+                                      </head>
+                                      <body>
+                                          <div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+                                          <button>Get External Content</button>
+                                      </body>
+                                  </html> -->
+
+                          L'exemple suivant charge le contenu du fichier " demo_test.txt " dans un élément <div> spécifique :
+                          Il est également possible d'ajouter un sélecteur jQuery pour le paramètre d'URL .
+
+                          Le paramètre callback optionnel spécifie une fonction callback à exécuter lorsque la méthode load () est terminée. La fonction callback peut avoir différents paramètres:
+                          * responseTxt - contient le contenu résultant si l'appel réussit
+                          * statusTxt - contient l'état de l'appel
+                          * XHR - contient l'objet XMLHttpRequest
+
+                          L'exemple suivant affiche un message d'alerte après que la méthode load () est terminée. Si la méthode load () a réussit, il affiche "External content loaded successfully!", Et si elle échoue, il affiche un message d'erreur:
+                            $("button").click(function(){
+                              $("#div1").load("demo_test.txt",function(responseTxt,statusTxt,xhr){
+                                if(statusTxt=="success")
+                                  alert("External content loaded successfully!");
+                                if(statusTxt=="error")
+                                  alert("Error: "+xhr.status+": "+xhr.statusText);
+                              });
+                            });
+
+                       2 -  jQuery - AJAX Méthodes get() et post()  
+
+                          Les méthodes get() et post() sont utilisées pour demander des données à partir du serveur avec une requête HTTP GET ou POST. 
+
+                          Requête HTTP: GET vs POST
+                          Deux méthodes couramment utilisées pour une requête-réponse entre le client et le serveur: GET et POST.    
+                          * GET - Demandes données à partir d'une ressource spécifiée
+                          * POST - des données soumet à être traitées à une ressource spécifiée
+                          * GET est essentiellement utilisé pour simplement obtenir (récupération) des données à partir du serveur. Remarque: La méthode GET peut renvoyer des données mises en cache.
+                          * POST peut également être utilisé pour obtenir des des données à partir du serveur. Cependant, la méthode POST ne met jamais les données dans la mémoire cache, et est souvent utilisé pour envoyer des données avec la demande.
+
+                       a- La méthode $.Get()
+
+                          La méthode $.Get() demande des données à partir du serveur avec une demande HTTP GET.
+                          Exemple:
+                             <!-- <!DOCTYPE html>
+                              <html>
+                                  <head>
+                                      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+                                      </script>
+                                      <script>
+                                      $(document).ready(function(){
+                                        $("button").click(function(){
+                                          $.get("demo_test.asp",function(data,status){
+                                            alert("Data: " + data + "\n Status: " + status);
+                                          });
+                                        });
+                                      });
+                                      </script>
+                                  </head>
+                                  <body>
+                                      <button>Send an HTTP GET request to a page and get the result back</button>
+                                  </body>
+                              </html>-->
+
+                          Le premier paramètre de $. Get () est l'URL que nous voulons demander ("demo_test.asp"). 
+                          Le second paramètre est une fonction callback. Le premier paramètre callback maintient le contenu de la page demandée, et le second paramètre callback maintient l'état de la requête. 
+
+                       b- La méthode $.POST()
+
+                          La méthode $.Post() demande des données au serveur à l'aide d'une requête HTTP POST. 
+                          Syntaxe:  $.post(URL,data,callback);
+                          Le paramètre d'URL requis spécifie l'URL que vous souhaitez demander.
+                          Le paramètre de données optionnel spécifie des données à envoyer avec la demande. 
+                          Le paramètre option callback est le nom d'une fonction à exécuter si la requête aboutit. 
+
+                          L'exemple suivant utilise la méthode $.post() pour envoyer des données avec la demande:
+                          <!--<!DOCTYPE html>
+                              <html>
+                                  <head>
+                                      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+                                      </script>
+                                      <script>
+                                      $(document).ready(function(){
+                                        $("button").click(function(){
+                                          $.post("demo_test_post.asp",
+                                          {
+                                            name:"Donald Duck",
+                                            city:"Duckburg"
+                                          },
+                                          function(data,status){
+                                            alert("Data: " + data + "\nStatus: " + status);
+                                          });
+                                        });
+                                      });
+                                      </script>
+                                  </head>
+                                  <body>
+                                      <button>Send an HTTP POST request to a page and get the result back</button>
+                                  </body>
+                              </html>-->
